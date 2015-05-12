@@ -1,0 +1,4 @@
+{
+	"hosts":["A","B","C","D"],
+	"neighbors":["B,D","A,C,D","B","A,B"]
+}
