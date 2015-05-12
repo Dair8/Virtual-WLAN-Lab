@@ -1,4 +1,5 @@
 #! /usr/bin/env python
+##Program that creates a new interface and create a connection with the controller
 
 import os, sys
 from socket import *
@@ -12,10 +13,12 @@ TUNSETIFF = 0x400454ca
 IFF_TAP   = 0x0002
 TUNMODE = IFF_TAP
 
+##Help function
 def usage(status=0):
     print "Usage: host.py [-t controllerip:port]"
     sys.exit(status)
 
+##Parsing the arguments
 opts = getopt.getopt(sys.argv[1:],"t:h")
 
 for opt,optarg in opts[0]:
@@ -28,13 +31,15 @@ for opt,optarg in opts[0]:
         peer = (IP,PORT)
 
 
+##Creating the interface
 f = os.open("/dev/net/tun", os.O_RDWR)
 ifs = ioctl(f, TUNSETIFF, struct.pack("16sH", "tun%d", TUNMODE))
 ifname = ifs[:16].strip("\x00")
 
-
+#Preparing the socket
 s = socket(AF_INET, SOCK_DGRAM)
 
+#Establishing conecction with the controller
 try:
     s.sendto(MAGIC_WORD, peer)
     word,peer = s.recvfrom(1500)
@@ -42,7 +47,7 @@ try:
         print "Bad magic word for %s:%i" % peer
         sys.exit(2)    
     ip,peer = s.recvfrom(1500)
-    print "Ejecutando comando: " + "ifconfig %s" %ifname + " %s" %ip
+    #Assigning received IP to the interface previously created
     os.system("ifconfig %s" %ifname + " %s" %ip)
     print "Connection with %s:%i established" % peer
     
