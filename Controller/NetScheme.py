@@ -10,9 +10,15 @@ class NetScheme:
     
     def addHost(self,host):
         self.netList[host]=[]
-            
+	
+    def getHost(self,i):
+	return self.netList(i)    
+   
     def delHost (self,host):
-        self.netList.pop(host)
+        self.netList.pop(host)	
+	
+    def getHosts (self):
+	return self.netList.keys()
                     
     def printHosts(self):
         print(self.netList.keys())
@@ -27,5 +33,5 @@ class NetScheme:
         self.netList[host]=[]
             
     def printScheme(self):
-        for i in self.netList:
-            print"Host: ",i + " Neighbors: ", self.netList[i]
+        for j in self.netList:
+            print"Host: %i" %j + " Neighbors: ", self.netList[j]
