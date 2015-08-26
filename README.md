@@ -1,6 +1,6 @@
-Virtual-WLAN-Lab
+Virtual-WANET-Lab
 ================
-Repository that hosts the Final Project related to the design and implementation of a Virtual Laboratory of Wireless Networks.
+Repository that hosts the Final Project related to the design and implementation of a Virtual Laboratory of Wireless Ad-hoc Networks.
 
 ###Requirements
 - Hosts: N Virtual Machines with Ubuntu 10.04 or another Linux Distribution with kernel 2.6.x, also the Netfiler module is required
