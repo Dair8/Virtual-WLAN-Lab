@@ -1,6 +1,6 @@
-Virtual-WLAN-Lab
+Virtual-WANET-Lab
 ================
-Repositorio que contiene el Trabajo Fin de Grado relacionado con el diseño e implementación de un Laboratorio Virtual de Redes Inalámbricas.
+Repositorio que contiene el Trabajo Fin de Grado relacionado con el diseño e implementación de un Laboratorio Virtual de Redes Ad-hoc Inalámbricas.
 
 ###Requisitos
 - Hosts: N Máquinas Virtuales con Ubuntu 10.04 u otra Distribución de Linux con kernel 2.6.x, y el módulo Netfiler instalado
