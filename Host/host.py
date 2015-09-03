@@ -13,11 +13,11 @@ def usage(status=0):
     sys.exit(status)
 
 #Global variables
-MAGIC_WORD = "VirtualWLANLab"
+MAGIC_WORD = "VirtualWANETLab"
 TUNSETIFF = 0x400454ca
 IFF_TAP   = 0x0002
 TUNMODE = IFF_TAP
-PORT=10000
+PORT = 10000
 
 #Parsing the arguments
 opts = getopt.getopt(sys.argv[1:],"h")
@@ -49,7 +49,7 @@ try:
     os.system("ifconfig %s" %ifname + " %s" %ip)
     print "Connection with %s:%i established" % peer
     
-    #Starting the wireless emulator functions  (host side)
+    #Starting the emulator functions  (host side)
     while 1:
         r = select([f,s],[],[])[0][0]
         if r == f:

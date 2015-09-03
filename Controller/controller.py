@@ -42,10 +42,11 @@ def usage(status=0):
     sys.exit(status)
 
 #Global variables
-MAGIC_WORD = "VirtualWLANLab"
+MAGIC_WORD = "VirtualWANETLab"
 PORT = 10000
 socketList = [0] * 256
 peer = [0] * 256
+#List of IPs that the controller will provide to the hosts. User configurable.
 ip=["10.0.0.1/24","10.0.0.2/24","10.0.0.3/24","10.0.0.4/24","10.0.0.5/24","10.0.0.6/24","10.0.0.7/24"]
 
 #Parsing the arguments
@@ -57,6 +58,7 @@ for opt,optarg in opts[0]:
     elif opt == "-t":
         target = optarg.split(",")
 
+#Parsing the json
 with open('data.json') as data_file:    
     data = json.load(data_file, object_hook=_decode_dict)
 
@@ -75,28 +77,28 @@ for i in scheme.netList.keys():
 try:
     j=0
     for i in scheme.netList.keys():
-	socketList[i].sendto(MAGIC_WORD, peer[i])
-	word,peer[i] = socketList[i].recvfrom(1500)
-	if word != MAGIC_WORD:
-		print "Bad magic word for %s:%i" % peer[i]
-		sys.exit(2)
+    socketList[i].sendto(MAGIC_WORD, peer[i])
+    word,peer[i] = socketList[i].recvfrom(1500)
+    if word != MAGIC_WORD:
+        print "Bad magic word for %s:%i" % peer[i]
+        sys.exit(2)
         ##Sending IP to the host's new interface
         socketList[i].sendto(ip[j], peer[i])
         print "Connection with %s:%i established" %peer[i]
-    	j+=1
+        j+=1
     print("Controller ready")
 
-    #Starting the wireless emulator functions (controller side)
+    #Starting the emulator functions (controller side)
     while 1:
         inp,outp,exc = select(socketList,[],[])
-	inp=inp[0]
-	buf,p = inp.recvfrom(1500)
-	i=0
-	while inp!=socketList[i]:
-		i+=1
-	aux=scheme.getNeighbors(i)[0]
-	for j in aux:
-		socketList[j].sendto(buf,peer[j])
+    inp=inp[0]
+    buf,p = inp.recvfrom(1500)
+    i=0
+    while inp!=socketList[i]:
+        i+=1
+    aux=scheme.getNeighbors(i)[0]
+    for j in aux:
+        socketList[j].sendto(buf,peer[j])
 
 except KeyboardInterrupt:
     print "Stopped by user."
