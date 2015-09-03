@@ -65,7 +65,7 @@ with open('data.json') as data_file:
 scheme=NetScheme(data["hosts"],data["neighbors"])
 
 
-#Preparing the peers list and the sockets using the hosts in the scheme provided
+#Preparing the peer list and the sockets using the hosts provided in the scheme 
 j=0
 for i in scheme.netList.keys():
     socketList[i] = socket(AF_INET, SOCK_DGRAM)
@@ -73,7 +73,7 @@ for i in scheme.netList.keys():
     print (peer[i])
     j+=1
 
-#Establishing conecctions with the hosts
+#Establishing connections with the hosts
 try:
     j=0
     for i in scheme.netList.keys():
