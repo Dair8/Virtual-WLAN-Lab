@@ -5,7 +5,7 @@ Repository that hosts the Final Project related to the design and implementation
 ###Requirements
 - Hosts: N Virtual Machines with Linux.
 - Controller: 1 Virtual Machine with Linux
-- Hosts:In case of want to use AODV, install AODV-UU: https://github.com/erimatnor/aodv-uu it requires kernel 2.6.x, and the Netfiler module.
+- Hosts: In case of wantint to use AODV, install AODV-UU: https://github.com/erimatnor/aodv-uu it requires kernel 2.6.x, and the Netfiler module.
 
 ###Instructions
 - Hosts: Initiate the Virtual Machines and launch host.py: "sudo python host.py"
