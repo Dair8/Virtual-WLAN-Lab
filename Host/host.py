@@ -13,7 +13,7 @@ def usage(status=0):
     sys.exit(status)
 
 #Global variables
-MAGIC_WORD = "VirtualWANETLab"
+MAGIC_WORD = "VirtualWLANLab"
 TUNSETIFF = 0x400454ca
 IFF_TAP   = 0x0002
 TUNMODE = IFF_TAP

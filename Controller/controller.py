@@ -1,5 +1,4 @@
 #! /usr/bin/env python
-##
 
 import os, sys
 from socket import *
@@ -42,7 +41,7 @@ def usage(status=0):
     sys.exit(status)
 
 #Global variables
-MAGIC_WORD = "VirtualWANETLab"
+MAGIC_WORD = "VirtualWLANLab"
 PORT = 10000
 socketList = [0] * 256
 peer = [0] * 256
